@@ -44,12 +44,12 @@ class CustomCard extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center, // Center align the text
                 style: const TextStyle(
-                  fontSize: 18, // Increased font size
+                  fontSize: 16, // Increased font size
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
             ],
           ),

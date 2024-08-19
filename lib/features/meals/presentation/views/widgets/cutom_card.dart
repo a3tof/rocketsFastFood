@@ -73,7 +73,7 @@ class CustomMealCard extends StatelessWidget {
                         title,
                         textAlign: TextAlign.center, // Center align the text
                         style: const TextStyle(
-                          fontSize: 16, // Increased font size
+                          fontSize: 14, // Increased font size
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -81,7 +81,7 @@ class CustomMealCard extends StatelessWidget {
                         price,
                         textAlign: TextAlign.center, // Center align the text
                         style: const TextStyle(
-                          fontSize: 16, // Increased font size
+                          fontSize: 14, // Increased font size
                           fontWeight: FontWeight.bold,
                         ),
                       ),

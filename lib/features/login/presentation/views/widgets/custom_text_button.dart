@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rockets/core/utils/app_router.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({super.key, required this.text, required this.color});
@@ -20,7 +22,11 @@ class CustomTextButton extends StatelessWidget {
             color,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          GoRouter.of(context).push(
+            AppRouter.kOrderView,
+          );
+        },
         child: Text(
           text,
           style: const TextStyle(

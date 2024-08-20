@@ -29,7 +29,7 @@ class CustomTextField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16),
         ),
-        suffixIcon: Icon(icon),
+        prefixIcon: Icon(icon),
         hintTextDirection: TextDirection.rtl,
         hintText: hintText,
         hintStyle: const TextStyle(

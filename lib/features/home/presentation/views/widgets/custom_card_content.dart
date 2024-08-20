@@ -13,6 +13,7 @@ class CustomCardsContent extends StatelessWidget {
       shrinkWrap: true,
       padding: const EdgeInsets.all(20),
       crossAxisSpacing: 10,
+      childAspectRatio: 1.2,
       mainAxisSpacing: 10,
       crossAxisCount: 2,
       children: [

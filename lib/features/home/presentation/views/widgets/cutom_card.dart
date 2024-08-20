@@ -14,7 +14,8 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
       onTap: onTap,
       child: Card(
         elevation: 5,
@@ -22,10 +23,9 @@ class CustomCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 16), // Adjusted padding
+          padding: const EdgeInsets.all(16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Center the content
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: Column(
@@ -33,9 +33,12 @@ class CustomCard extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Image.asset(
-                      image,
-                      height: 70, // Adjusted image height
+                    SizedBox(
+                      height: 50,
+                      child: Image.asset(
+                        image,
+                        height: 60,
+                      ),
                     ),
                   ],
                 ),
@@ -44,12 +47,9 @@ class CustomCard extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center, // Center align the text
                 style: const TextStyle(
-                  fontSize: 16, // Increased font size
+                  fontSize: 14, // Increased font size
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-              const SizedBox(
-                height: 15,
               ),
             ],
           ),

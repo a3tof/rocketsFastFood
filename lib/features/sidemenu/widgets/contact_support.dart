@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rockets/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomContactSupport extends StatelessWidget {
   const CustomContactSupport({
@@ -10,7 +11,17 @@ class CustomContactSupport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () async {
+        Uri url = Uri.parse('tel:16957');
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url);
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Could not launch phone dialer')),
+          );
+        }
+      },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(

@@ -23,7 +23,7 @@ class CustomTextButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          GoRouter.of(context).push(
+          GoRouter.of(context).go(
             AppRouter.kBuyView,
           );
         },

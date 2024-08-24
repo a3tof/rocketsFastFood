@@ -6,8 +6,16 @@ import 'package:rockets/core/utils/app_router.dart';
 import 'package:rockets/core/widgets/custom_drawer.dart';
 import 'package:rockets/features/login/presentation/views/widgets/custom_text_button.dart';
 
-class BuyDetailsViewBody extends StatelessWidget {
+class BuyDetailsViewBody extends StatefulWidget {
   const BuyDetailsViewBody({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _BuyDetailsViewBodyState createState() => _BuyDetailsViewBodyState();
+}
+
+class _BuyDetailsViewBodyState extends State<BuyDetailsViewBody> {
+  String _selectedSegment = 'cash';
 
   @override
   Widget build(BuildContext context) {
@@ -48,93 +56,252 @@ class BuyDetailsViewBody extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Row(
-              children: [
-                const SizedBox(width: 16),
-                Image.asset(
-                  'assets/images/rocket.png',
-                  width: 120,
-                ),
-                const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              // ** المنتج
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'التفاصيل',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'عروض السعادة',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            Image.asset(
+                              'assets/images/rocket.png',
+                              width: 120,
                             ),
-                            Text(
-                              'السعر : 100 جنيه',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              'الكمية : 1',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 16),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        'عروض السعادة',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        'السعر : 100 جنيه',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        'الكمية : 1',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const Text(
-              'الدليفري : 20 جنيه',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'نوي - القليوبية - مصر',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'أضف عنونا أخر',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              // ** العنوان
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
                 ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  width: 30,
-                  child: CircleAvatar(
-                    backgroundColor: kPrimaryColor,
-                    child: IconButton(
-                      padding: const EdgeInsets.all(0),
-                      onPressed: () {
-                        GoRouter.of(context).push(
-                          AppRouter.kOrderView,
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.add,
-                        color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'العنوان',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'نوي - القليوبية - مصر',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.end,
+                                ),
+                                SizedBox(width: 10),
+                                SizedBox(
+                                  width: 30,
+                                  child: CircleAvatar(
+                                    backgroundColor: kPrimaryColor,
+                                    child: Icon(
+                                      Icons.home,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(16),
+                              onTap: () {
+                                GoRouter.of(context).push(
+                                  AppRouter.kOrderView,
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const Text(
+                                    'أضف عنونا أخر',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  SizedBox(
+                                    width: 30,
+                                    child: CircleAvatar(
+                                      backgroundColor: kPrimaryColor,
+                                      child: IconButton(
+                                        padding: const EdgeInsets.all(0),
+                                        onPressed: () {
+                                          GoRouter.of(context).push(
+                                            AppRouter.kOrderView,
+                                          );
+                                        },
+                                        icon: const Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const CustomTextButton(
-                text: 'الدفع عند الاستلام', color: kPrimaryColor),
-            const Directionality(
-              textDirection: TextDirection.rtl,
-              child: CustomTextButton(
-                  text: 'الدفع ب Visa / Master Card', color: kPrimaryColor),
-            ),
-            const CustomTextButton(text: 'أكمل الطلب', color: kPrimaryColor),
-          ],
+              ),
+              // ** الدفع
+              const SizedBox(height: 30),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'طريقة الدفع',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 20),
+                            SegmentedButton<String>(
+                              style: SegmentedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                selectedBackgroundColor: kPrimaryColor,
+                                selectedForegroundColor: Colors.white,
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'kufi',
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                              ),
+                              segments: const <ButtonSegment<String>>[
+                                ButtonSegment<String>(
+                                  value: 'visa',
+                                  label: Text('الدفع عن طريق الفيزا'),
+                                ),
+                                ButtonSegment<String>(
+                                  value: 'cash',
+                                  label: Text('الدفع عند الاستلام'),
+                                ),
+                              ],
+                              selected: {_selectedSegment},
+                              onSelectionChanged: (newSelection) {
+                                setState(() {
+                                  _selectedSegment = newSelection.first;
+                                });
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 25),
+              const CustomTextButton(
+                text: 'أكمل الطلب',
+                color: kPrimaryColor,
+              ),
+            ],
+          ),
         ),
       ),
     );
